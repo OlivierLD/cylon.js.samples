@@ -19,5 +19,5 @@ _Example_: feed Adafruit-IO from Cylon.js:
 ```
  $ sudo node data.feeder.js <your Adafruit-IO key>
 ```
-Read a BMP180 from cylon.js, and send data to an Dadafruit-IO feed.
+Read a BMP180 from cylon.js, and send data to an Adafruit-IO feed.
 
