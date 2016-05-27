@@ -120,10 +120,10 @@ var go = function() {
 
     // Errors etc
     fetchTempData.fail(function(error) {
-      alert('Data request failed (timeout?), try again later.\n' + (error !== undefined ? error : ''));
+      $("#mess").text('Data request failed (timeout? invalid key?), try again later.\n' + (error !== undefined ? error : ''));
     });
     fetchPressData.fail(function(error) {
-      alert('Data request failed (timeout?), try again later.\n' + (error !== undefined ? error : ''));
+      $("#mess").text('Data request failed (timeout?? invalid key?), try again later.\n' + (error !== undefined ? error : ''));
     });
   } else {
     $("#mess").text('Please enter your Adafruit-IO key in the field above');
