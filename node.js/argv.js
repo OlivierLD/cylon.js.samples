@@ -10,13 +10,22 @@ console.log('Param: ' + param);
 var someValue = process.env['SOME_VALUE'];
 console.log("Some value:" + someValue);
 
-var val = 255;
-console.log("val:", val, "= 0x" + val.toString(16).trim().toUpperCase() + "");
+var getMask = function(num) {
+  var maskDim = 2;
+  for (var i=2; i<16; i+=2) {
+    maskDim = i;
+    if (Math.abs(num) < (Math.pow(16, i) - 1)) {
+      console.log("i=" + i + ", " + Math.abs(num) + " < " + (Math.pow(16, i) - 1));
+      break;
+    }
+  }
+  return Math.pow(16, maskDim) - 1;
+};
 
 var toHexString = function(num, len) {
-  var l = (len !== undefined ? len : 4);	
-  return "0x" + lpad((num & (Math.pow(16, l) - 1)).toString(16).trim().toUpperCase(), l, '0');
-}
+  var l = (len !== undefined ? len : 4);
+  return "0x" + lpad((num & getMask(num)).toString(16).trim().toUpperCase(), l, '0');
+};
 
 var lpad = function(str, len, pad) {
   var s = str;
@@ -24,12 +33,17 @@ var lpad = function(str, len, pad) {
     s = (pad !== undefined ? pad : " ") + s;
   }
   return s;
-}
+};
 
-val = Number.MAX_VALUE; // Wow!
+var val = 255;
+console.log("val:", val, "= 0x" + val.toString(16).trim().toUpperCase() + "");
+
+val = 126543;
 console.log("Val:" + val + " = ", toHexString(val, 8));
 
-val = -1131; // FB95
-var nd = 4; // Number of Digits
-// console.log("Val:" + val + " = ", toHexString(val & (Math.pow(16, nd) - 1), nd));
-console.log("Val:" + val + " = ", toHexString(val, nd));
+val = -1135;
+console.log("Val:" + val + " = ", toHexString(val, 8));
+
+val = Math.pow(16, 6) + 175;
+console.log("Val:" + val + " = ", toHexString(val,  8));
+console.log("Val:" + val + " = ", toHexString(val, 10));
