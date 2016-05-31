@@ -34,7 +34,7 @@ Cylon.robot({
   work: function(dev) {
     every((10).second(), function () {
 
-      dev.bme280.readPressure(function(err, val) {
+      dev.bme280.readPressure(function(err, val) { // Pressure also returns temperature
         if (err) {
           console.log("bme280.readPressure:" , err);
           return;
@@ -79,7 +79,7 @@ Cylon.robot({
         // POST completed
       });
 
-      after((1).second(), function() {
+      after((1).second(), function() { // Read humidity
           dev.bme280.readHumidity(function(err, val) {
             if (err) {
               console.log("bme280.readHumidity:" , err);
