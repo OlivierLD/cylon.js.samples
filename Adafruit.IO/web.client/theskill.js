@@ -1,14 +1,16 @@
-var thermometer, prmsl;
+var thermometer, prmsl, hum;
 
 $(document).ready(function() {
   thermometer = new Thermometer('tmpCanvas', 200);
   prmsl = new AnalogDisplay('prmslCanvas', 80, 1045, 10, 1, true, 50, 985, 0);
+  hum   = new AnalogDisplay('humCanvas', 80, 100, 10, 1, true, 50, 0, 1);
 
   setInterval(go, 5000); // Refresh every 5 seconds.
 });
 
 var FEED_NAME_TEMP  = 'air-temperature';
 var FEED_NAME_PRESS = 'atm-press';
+var FEED_NAME_HUM   = 'humidity';
 
 var getTempData = function() {
   var deferred = $.Deferred(),  // a jQuery deferred
@@ -66,6 +68,34 @@ var getPressData = function() {
   return deferred.promise();
 };
 
+var getHumData = function() {
+  var deferred = $.Deferred(),  // a jQuery deferred
+      url = 'https://io.adafruit.com/api/feeds/' + FEED_NAME_HUM,
+      xhr = new XMLHttpRequest(),
+      TIMEOUT = 10000;
+
+  xhr.open('GET', url, true);
+  var key = $("#a-key").val();
+  xhr.setRequestHeader("X-AIO-Key", key);
+
+  xhr.send();
+
+  var requestTimer = setTimeout(function() {
+    xhr.abort();
+    deferred.reject();
+  }, TIMEOUT);
+
+  xhr.onload = function() {
+    clearTimeout(requestTimer);
+    if (xhr.status === 200) {
+      deferred.resolve(xhr.response);
+    } else {
+      deferred.reject();
+    }
+  };
+  return deferred.promise();
+};
+
 var go = function() {
   var k = $("#a-key").val();
 
@@ -98,6 +128,26 @@ var go = function() {
       }, 1);
     });
 
+    var fetchHumData = getHumData();
+    fetchHumData.done(function(value) {
+  //  console.log("Done :" + value); // Raw data
+      // Display it...
+      var json = JSON.parse(value);
+      try {
+        var humpc = parseFloat(json.last_value);
+      //thermometer.animate(temp);
+        hum.setValue(humpc);
+        $("#raw-hum").html(humpc.toFixed(2) + " %")
+      } catch (err) {
+        $("#mess").text("Problem with humidity...:" + err);
+        hum.setValue(0.0);
+      }
+      $("#last-value").text('Last updated ' + new Date());
+      setTimeout(function() {
+        $('body').css('cursor', 'auto');
+      }, 1);
+    });
+
     var fetchPressData = getPressData();
     fetchPressData.done(function(value) {
   //  console.log("Done :" + value); // Raw data
@@ -120,10 +170,10 @@ var go = function() {
 
     // Errors etc
     fetchTempData.fail(function(error) {
-      alert('Data request failed (timeout?), try again later.\n' + (error !== undefined ? error : ''));
+      $("#mess").text('Data request failed (timeout? invalid key?), try again later.\n' + (error !== undefined ? error : ''));
     });
     fetchPressData.fail(function(error) {
-      alert('Data request failed (timeout?), try again later.\n' + (error !== undefined ? error : ''));
+      $("#mess").text('Data request failed (timeout?? invalid key?), try again later.\n' + (error !== undefined ? error : ''));
     });
   } else {
     $("#mess").text('Please enter your Adafruit-IO key in the field above');
