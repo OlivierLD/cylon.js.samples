@@ -23,19 +23,28 @@ var args = {
 };
 
 client.post(postURL, args, function (data, response) {
+    console.log("Post response came back");
 	// parsed response body as js object
-	console.log(data);
+//	console.log(data);
 
 	// raw response
-	console.log(response);
+//	console.log(response);
+}).on('error', function(err) {
+    console.error('POST request Ooops ', err);
 });
 
+client.on('error', function(err) {
+    console.error('Something went wrong with the client', err);
+});
+
+if (false) {
 // registering remote methods
-client.registerMethod("postMethod", postURL, "POST");
+    client.registerMethod("postMethod", postURL, "POST");
 
-client.methods.postMethod(args, function (data, response) {
-	// parsed response body as js object
-	console.log(data);
-	// raw response
-	console.log(response);
-});
+    client.methods.postMethod(args, function (data, response) {
+        // parsed response body as js object
+        console.log(data);
+        // raw response
+        console.log(response);
+    });
+}
