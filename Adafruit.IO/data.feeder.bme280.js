@@ -42,7 +42,7 @@ Cylon.robot({
           return;
         }
         console.log("readPressure call:");
-        console.log("\tTemperature: " + val.temp + " C");
+        console.log("\tTemperature: " + val.temp.toFixed(2) + " C");
         console.log("\tPressure: " + (val.press / 100).toFixed(2) + " hPa");
         // Send data
         postURL = BASE_URL + TEMP_FEED + SUFFIX;
@@ -57,7 +57,9 @@ Cylon.robot({
       //    console.log(data);
             // raw response
       //    console.log(response);
-          });
+          }).on('error', function(err) {
+                            console.error('POST request 1 ', err);
+                        });
         } catch (err) {
           console.err(err);
         }
@@ -74,7 +76,9 @@ Cylon.robot({
       //     console.log(data);
              // raw response
       //     console.log(response);
-          });
+          }).on('error', function(err) {
+                console.error('POST request 2 ', err);
+            });
         } catch (err) {
           console.err(err);
         }
@@ -102,13 +106,19 @@ Cylon.robot({
           //    console.log(data);
                 // raw response
           //    console.log(response);
-              });
+              }).on('error', function(err) {
+                                console.error('POST request 3 ', err);
+                            });
             } catch (err) {
               console.err(err);
             }
             // POST completed
           });
       });
+    });
+
+    client.on('error', function(err) {
+        console.error('Something went wrong with the REST client', err);
     });
   }
 }).start();

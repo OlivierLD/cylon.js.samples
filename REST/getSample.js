@@ -26,8 +26,14 @@ client.get(getUrl, args, function (data, response) {
 	// raw response 
 //	console.log("===== RESPONSE =======")
 //	console.log(response);
+}).on('error', function(err) {
+                  console.error('GET request ', err);
+               });
+
+client.on('error', function(err) {
+    console.error('Something went wrong with the client', err);
 });
- 
+
 // registering remote methods 
 client.registerMethod("getOnOff", getUrl, "GET");
  

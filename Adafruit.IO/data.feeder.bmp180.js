@@ -54,7 +54,9 @@ Cylon.robot({
       //    console.log(data);
             // raw response
       //    console.log(response);
-          });
+          }).on('error', function(err) {
+                            console.error('Something went wrong with the POST request (1) ', err);
+                         });
         } catch (err) {
           console.err(err);
         }
@@ -71,12 +73,18 @@ Cylon.robot({
       //     console.log(data);
              // raw response
       //     console.log(response);
-          });
+          }).on('error', function(err) {
+                                        console.error('Something went wrong with the POST request (2) ', err);
+                                     });
         } catch (err) {
           console.err(err);
         }
         // POST completed
       });
+    });
+
+    client.on('error', function(err) {
+        console.error('Something went wrong with the REST client', err);
     });
   }
 }).start();
