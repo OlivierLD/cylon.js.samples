@@ -6,7 +6,9 @@ if (process.argv.length <= 2) {
 var AIOKey = process.argv[2];
 console.log('AIO Key: ' + AIOKey);
 
-// Initialize REST post client
+/* Initialize REST post client
+ * See https://www.npmjs.com/package/node-rest-client for details.
+ */
 var Client = require('node-rest-client').Client;
 
 var client = new Client();
