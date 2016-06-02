@@ -17,7 +17,9 @@ You need an Adafruit-IO key.
 
 _Example_: feed Adafruit-IO from Cylon.js:
 ```
- $ sudo node data.feeder.js <your Adafruit-IO key>
+ $ sudo node data.feeder.bme280.js <your Adafruit-IO key>
 ```
-This reads a BMP180 from cylon.js, and send data to an Adafruit-IO feed.
+This reads a BME280 from cylon.js, and send data to an Adafruit-IO feed.
 
+Then you can visualize the data on the [Adafruit-IO](https://io.adafruit.com) web site, or by launching `index.html`,
+located in the `Adafruit.IO/web.client` directory of the repo.
