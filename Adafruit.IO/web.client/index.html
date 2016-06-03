@@ -8,6 +8,43 @@
     <script type="text/javascript" src="widgets/AnalogDisplay.js"></script>
     <link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
     <style type="text/css">
+      @font-face {
+        font-family: "Digi Font";
+        src: url(fonts/ds-digi.ttf) format("truetype");
+      }
+      .digifont {
+        font-family: "Digi Font", Verdana, Tahoma;
+        color: blue;
+      }
+    </style>
+    <style type="text/css">
+
+      .displayCanvas {
+        border: 1px solid #9C9898;
+        opacity:0.75;
+      }
+
+      .selectedButton {
+        padding:5px;
+        border-top-right-radius: 10px;
+        border:2px solid #CCC;
+        margin-top:10px;
+        border-bottom: none;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .unselectedButton {
+        padding:5px;
+        border-top-right-radius: 10px;
+        border:1px solid #CCC;
+        margin-top:10px;
+        border-bottom: none;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    </style>
+    <style type="text/css">
       .displayCanvas {
         border: 1px solid #9C9898;
         opacity:0.9;
@@ -17,6 +54,20 @@
         color: white;
       }
     </style>
+    <script>
+      var setup = function(b1, b2) {
+        // divs
+        document.getElementById('analog').style.display = (b1 === true ? 'inline' : 'none');
+        document.getElementById('digital').style.display = (b2 === true ? 'inline' : 'none');
+        // buttons
+        document.getElementById('showDisplays1').className = (b1 === true ? 'selectedButton' : 'unselectedButton');
+        document.getElementById('showDisplays2').className = (b2 === true ? 'selectedButton' : 'unselectedButton');
+      };
+
+      var showDisplays = function(tab) {
+        setup(tab==1?true:false, tab==2?true:false);
+      };
+    </script>
   </head>
   <body>
     <h2>Adafruit IO, with jQuery</h2>
@@ -27,8 +78,14 @@
       <small><span id="mess"></span></small>
     </p>
     <div id="data" style="display: none;">
+      <div style="margin-bottom: -4px;">
+        <span id="showDisplays1" onclick="showDisplays(1);" class="selectedButton">Analog</span>
+        <span id="showDisplays2" onclick="showDisplays(2);" class="unselectedButton">Digital</span>
+      </div>
+      <hr>
       <small><div id="last-value"></div></small>
-      <table>
+      <div id="analog" style="display: inline;">
+        <table>
         <tr>
           <td align="center" valign="top" rowspan="1">
             <canvas id="tmpCanvas" width="80" height="176" title="Air Temperature in Celcius"></canvas>
@@ -53,6 +110,26 @@
             -->
         </tr>
       </table>
+      </div>
+
+      <div id="digital" style="display: none;">
+        <table>
+        <tr>
+          <td style="margin-top:10px;">Temperature in &deg;C</td>
+          <td style="margin-top:10px;">Pressure in hPa</td>
+          <td style="margin-top:10px;">Humidity in %</td>
+        </tr>
+        <tr>
+          <td><div id="temp" class="digifont"
+                   style="padding:5px; border-radius:5px; border:1px solid #CCC; margin-top:10px; font-size: 80px; ">0</div></td>
+          <td><div id="press" class="digifont"
+                   style="padding:5px; border-radius:5px; border:1px solid #CCC; margin-top:10px; font-size: 80px; ">0</div></td>
+          <td><div id="hum" class="digifont"
+                   style="padding:5px; border-radius:5px; border:1px solid #CCC; margin-top:10px; font-size: 80px; ">0</div></td>
+        </tr>
+      </table>
+      </div>
+
     </div>
     <hr/>
     <address>Oliv fecit, AD 2016.</address>

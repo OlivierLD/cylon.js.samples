@@ -118,6 +118,7 @@ var go = function() {
       //thermometer.animate(temp);
         thermometer.setValue(temp);
         $("#raw-temp").html(temp.toFixed(2) + "&deg;C")
+        $("#temp").text(temp.toFixed(2));
       } catch (err) {
         $("#mess").text("Problem with temperature...:" + err);
         thermometer.setValue(0.0);
@@ -138,6 +139,7 @@ var go = function() {
       //thermometer.animate(temp);
         hum.setValue(humpc);
         $("#raw-hum").html(humpc.toFixed(2) + " %")
+        $("#hum").text(humpc.toFixed(2))
       } catch (err) {
         $("#mess").text("Problem with humidity...:" + err);
         hum.setValue(0.0);
@@ -158,6 +160,7 @@ var go = function() {
       //thermometer.animate(temp);
         prmsl.setValue(press);
         $("#raw-prmsl").text(press.toFixed(2) + " hPa");
+        $("#press").text(press.toFixed(2));
       } catch (err) {
         $("#mess").text("Problem with temperature...:" + err);
         prmsl.setValue(0.0);
