@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
+#
+YAML=$1
+#
 CODEGEN_JAR=~/oliv.work/swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar
 #
-rm -rf echo
+rm -rf $YAML
 #
 java -jar $CODEGEN_JAR \
           generate \
-          -i echo.yaml \
+          -i $YAML.yaml \
           -l nodejs-server \
-          -o echo
+          -o $YAML
 #
-cd echo
+cd $YAML
 npm install
 #
 echo Install more stuff here if needed...
