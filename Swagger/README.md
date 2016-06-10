@@ -152,6 +152,8 @@ exports.postSentence = function(args, res, next) {
   res.end();
 }
 </pre>
+_Note_: Make sure `espeak` is in the PATH (like with `espeak.path.cmd` on Windows).
+
 You should be OK to restart the server.
 ```
 $ node .
