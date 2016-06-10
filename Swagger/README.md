@@ -2,7 +2,7 @@
 
 Here is a quick illustration of the way to use REST services to invoke Cylon drivers features.
 REST is a standard, that is why we can think of it. Enabling REST on top of Cylon provides it a universal access.
->>>>>>> d61ac0a4064f8da31241337848c6ba755d7beb47
+
 Start from the file named `speak.yaml`, it is the description of the services that will
 - be consumed by a REST client
 - invoke the Cylon driver
@@ -122,7 +122,7 @@ Cylon.robot({
   },
 
   devices: {
-    mouth: { driver: 'speech', language: 'en', gender: 'f', speed: 130 }
+    mouth: { driver: 'speech', language: "american", gender: "m", speed: 170 }
   },
 
   work: function(my) {
