@@ -96,6 +96,7 @@ and refer to it before the server is started, as follow:
     console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
 </pre>
 For this http server: whatever URL that begins with `/data/` refers to a static document (see the URL at the very bottom of this document).
+The root of those documents is located in the `web.client` directory (at the same level as `speak` and `echo`, under `Swagger`).
 
 ##### Service code
 In `SpeakService.js`, add the following code at the end of the file:
