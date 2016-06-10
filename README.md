@@ -23,3 +23,5 @@ This reads a BME280 from cylon.js, and send data to an Adafruit-IO feed.
 
 Then you can visualize the data on the [Adafruit-IO](https://io.adafruit.com) web site, or by launching `index.html`,
 located in the `Adafruit.IO/web.client` directory of the repo.
+
+... and more.

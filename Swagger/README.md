@@ -1,10 +1,16 @@
 ### Cylon & Swagger
 
-Here is a quick illustration of the way to invoke REST services to work with Cylon drivers.
+Here is a quick illustration of the way to use REST services to invoke Cylon drivers features.
+REST is a standard, that is why we can think of it. Enabling REST on top of Cylon provides it a universal access.
 
 Start from the file named `speak.yaml`, it is the description of the services that will
 - be consumed by a REST client
 - invoke the Cylon driver
+
+We will use the Swagger code generator to create the stubs (server-side skeletons) that will be fleshed later.
+This generated code _will become_ the implementation of the REST service(s) consuming the Cylon driver's features.
+As such, any REST-aware client can invoke it. It will be the bridge between a client (Web browser, curl, REST client program, ...)
+and the Cylon driver's features your application can be interested in.
 
 The REST client can be embedded in a web page. As Cylon runs on `node.js`, the node server can also be used as an HTTP server. 
 We are going to do this _without_ `Express.js`, which is not necessary for this small example.
