@@ -23,7 +23,7 @@ This will
 If all is good - i.e. you have no error messages - stop the server (hit Ctrl+C), we need to add some code to the generated one.
 
 ##### HTTP Server code
-In `index.js`, add the following code at the end of the file (this is also the content of the file named `httpserver.snippet.js`):
+In `index.js` (Swagger generated), add the following code at the end of the file (this is also the content of the file named `httpserver.snippet.js`):
 ```
 var verbose = false;
 
@@ -99,7 +99,7 @@ For this http server: whatever URL that begins with `/data/` refers to a static 
 The root of those documents is located in the `web.client` directory (at the same level as `speak` and `echo`, under `Swagger`).
 
 ##### Service code
-In `SpeakService.js`, add the following code at the end of the file:
+In `SpeakService.js` (Swagger generated), add the following code at the end of the file:
 ```
 var speechDevice = undefined;
 
