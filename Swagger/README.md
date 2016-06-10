@@ -152,7 +152,11 @@ exports.postSentence = function(args, res, next) {
   res.end();
 }
 </pre>
-_Note_: Make sure `espeak` is in the PATH (like with `espeak.path.cmd` on Windows).
+_Note_: Make sure `espeak` is in the PATH (like with `espeak.path.cmd` on Windows). To validate that, run this:
+```
+ $> espeak "Make sure it works"
+```
+and you should hear the sentence above.
 
 You should be OK to restart the server.
 ```
