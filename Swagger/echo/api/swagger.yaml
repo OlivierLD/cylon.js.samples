@@ -1,0 +1,58 @@
+---
+swagger: "2.0"
+info:
+  description: "#### Echos back every URL, method, parameter and header\nFeel free\
+    \ to make a path or an operation and use **Try Operation** to test it. The echo\
+    \ server will\nrender back everything.\n"
+  version: "1.0.0"
+  title: "Echo"
+host: "localhost:9876"
+basePath: "/echo"
+schemes:
+- "http"
+paths:
+  /:
+    get:
+      tags:
+      - "echo"
+      operationId: "getEcho"
+      parameters: []
+      responses:
+        200:
+          description: "Echo GET"
+      x-swagger-router-controller: "Echo"
+    post:
+      tags:
+      - "echo"
+      operationId: "postEcho"
+      parameters:
+      - name: "name"
+        in: "formData"
+        description: "name"
+        required: false
+        type: "string"
+      - name: "year"
+        in: "formData"
+        description: "year"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Echo POST"
+      x-swagger-router-controller: "Echo"
+  /test-path/{id}:
+    get:
+      tags:
+      - "echo"
+      operationId: "getTestEcho"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Echo test-path"
+      x-swagger-router-controller: "Echo"
+definitions: {}

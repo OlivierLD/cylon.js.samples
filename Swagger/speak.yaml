@@ -1,0 +1,26 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Speak
+  description: Uses cylon.js speech driver to talk the sentence posted on a REST service
+schemes:
+  - http
+host: localhost:8765
+basePath: /speak
+paths:
+  /:
+    post:
+      tags:
+      - speak
+      operationId: postSentence
+      description: Sends to the server a sentence to speak
+      responses:
+        200:
+          description: Speak POST
+      parameters:
+        - name: sentence
+          in: formData
+          type: string
+          description: The actual sentence to speak
+          required: true
