@@ -8,7 +8,7 @@ Start from the file named `speak.yaml`, it is the description of the services th
 - invoke the Cylon driver
 
 The REST client can be embedded in a web page. As Cylon runs on `node.js`, the node server can also be used as an HTTP server. 
-We are going to do this without `Express.js`, which is not necessary in this sall example.
+We are going to do this without `Express.js`, which is not necessary in this small example.
 We will use the Swagger code generator to create the stubs (server-side skeletons) that will be fleshed later.
 This generated code _will become_ the implementation of the REST service(s) consuming the Cylon driver's features.
 As such, any REST-aware client can invoke it. It will be the bridge between a client (Web browser, curl, REST client program, ...)
