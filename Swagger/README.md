@@ -174,3 +174,22 @@ leveraging the JQuery promises.
 _*The exact same calls can be made using tools like `curl`, `Postman`, etc.*_
 
 The web UI is just a bit more sexy.
+
+The Postman code:
+```
+POST /speak/ HTTP/1.1
+Host: localhost:8765
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Cache-Control: no-cache
+Postman-Token: 0ff87300-25a9-e6ea-e1c9-c6d9e3586663
+
+sentence=Some content
+```
+
+The `curl` code:
+```
+$> curl -X POST --header 'Content-Type: application/x-www-form-urlencoded'
+                --header 'Accept: application/json'
+                -d 'sentence=Some content' 'http://localhost:8765/speak/'
+```
