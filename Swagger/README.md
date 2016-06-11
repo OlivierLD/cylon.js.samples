@@ -14,6 +14,9 @@ This generated code _will become_ the implementation of the REST service(s) cons
 As such, any REST-aware client can invoke it. It will be the bridge between a client (Web browser, curl, REST client program, ...)
 and the Cylon driver's features your application can be interested in.
 
+#### Get the software
+Both [Swagger](https://github.com/swagger-api/swagger-codegen) and [Cylon](https://cylonjs.com/) are available on github.
+
 #### Step by step
 - generate the server-side stubs, for `node.js`, run the `gen-code.sh` script:
 ```
