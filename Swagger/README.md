@@ -14,9 +14,6 @@ This generated code _will become_ the implementation of the REST service(s) cons
 As such, any REST-aware client can invoke it. It will be the bridge between a client (Web browser, curl, REST client program, ...)
 and the Cylon driver's features your application can be interested in.
 
-The REST client can be embedded in a web page. As Cylon runs on `node.js`, the node server can also be used as an HTTP server. 
-We are going to do this _without_ `Express.js`, which is not necessary for this small example.
-
 #### Step by step
 - generate the server-side stubs, for `node.js`, run the `gen-code.sh` script:
 ```
