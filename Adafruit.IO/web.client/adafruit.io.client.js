@@ -1,5 +1,9 @@
 var thermometer, prmsl, hum;
 
+var sensordata = [];
+
+var lastTemperature, lastPressure, lastHumidity;
+
 $(document).ready(function() {
   thermometer = new Thermometer('tmpCanvas', 200);
   prmsl = new AnalogDisplay('prmslCanvas', 80, 1045, 10, 1, true, 50, 985, 0);
@@ -115,6 +119,8 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var temp = parseFloat(json.last_value);
+        lastTemperature = temp;
+        sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
         thermometer.setValue(temp);
         $("#raw-temp").html(temp.toFixed(2) + "&deg;C")
@@ -136,6 +142,8 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var humpc = parseFloat(json.last_value);
+        lastHumidity = humpc;
+        sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
         hum.setValue(humpc);
         $("#raw-hum").html(humpc.toFixed(2) + " %")
@@ -157,6 +165,8 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var press = parseFloat(json.last_value);
+        lastPressure = press;
+        sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
         prmsl.setValue(press);
         $("#raw-prmsl").text(press.toFixed(2) + " hPa");
