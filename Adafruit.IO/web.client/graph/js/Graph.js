@@ -148,10 +148,10 @@ function Graph(cName,       // Canvas Name
     
     var smoothData = data;
     var _smoothData = [];
-    var smoothWidth = 20;
+    var smoothWidth = Math.max(20, Math.round(data.length / 10));
     for (var i=0; i<smoothData.length; i++) {
       var yAccu = 0;
-      for (var acc=i-(smoothWidth / 2); acc<i+(smoothWidth/2); acc++) {
+      for (var acc=Math.round(i-(smoothWidth / 2)); acc<Math.round(i+(smoothWidth/2)); acc++) {
         var y;
         if (acc < 0) {
           y = smoothData[0].getY();

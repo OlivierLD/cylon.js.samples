@@ -153,7 +153,7 @@ var displayData = function() {
     graphdata = [];
     var type = document.getElementById("data-type").value;
 
-    console.log("Type: [" + type + "]");
+//  console.log("Type: [" + type + "]");
     var unit = "kt";
 
     for (var i=0; i<graphData.length; i++) {
