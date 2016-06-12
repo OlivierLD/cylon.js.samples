@@ -45,7 +45,7 @@ function Graph(cName,       // Canvas Name
       if (idx < JSONParser.graphData.length) {
         var str = [];
         try { 
-          str.push(reformatDate(JSONParser.graphData[idx].getDataDate(), "d-M-Y H:i"));
+          str.push(reformatDate(JSONParser.graphData[idx].getDataDate(), "d-M-Y H:i:s"));
           str.push("Press: " + JSONParser.graphData[idx].getDataPress() + " hPa");
           str.push("Temp : " + JSONParser.graphData[idx].getDataTemp() + "\272C");
           str.push("Hum  : " + JSONParser.graphData[idx].getDataHum() + " %");
@@ -216,7 +216,7 @@ function Graph(cName,       // Canvas Name
       context.rotate(-Math.PI / 2);
       context.font = "bold 10px Arial"; 
       context.fillStyle = 'black';
-      str = reformatDate(JSONParser.graphData[i].getDataDate(), "d-M H:i");
+      str = reformatDate(JSONParser.graphData[i].getDataDate(), "d-M H:i:s");
       len = context.measureText(str).width;
       context.fillText(str, 2, -1); //i * xScale, cHeight - (len));
       context.restore();            

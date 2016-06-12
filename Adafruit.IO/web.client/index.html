@@ -156,10 +156,13 @@
       <div id="graph" style="display: none;">
         <table border="0">
           <tr>
-            <td colspan="1" valign="top" align="right" rowspan="1">
-              <textarea id="spot" style="margin: 2px; height: 50px; width: 365px;" onchange="javascript:onDataChange();"></textarea>
-              <br/>
-              <small>Paste your JSON data &uarr; in the box above ...</small>
+            <td colspan="2" valign="top" align="right" rowspan="1">
+              <!-- Make it inline for debugging -->
+              <div style="display: none;">
+                <textarea id="spot" style="margin: 2px; height: 50px; width: 365px;" onchange="javascript:onDataChange();"></textarea>
+                <br/>
+                <small>Paste your JSON data &uarr; in the box above ...</small>
+              </div>
             </td>
           </tr>
           <tr>
@@ -170,11 +173,14 @@
                 <option value="PRESS">Pressure</option>
                 <option value="HUM">Humidity</option>
               </select>
-              &nbsp;&nbsp;<small>Click on the graph to update the displays.</small>
+              &nbsp;&nbsp;<small>Click on the graph, if you dare...</small>
+            </td>
+            <td align="right" colspan=""1">
+              <button onclick="setGraphData(sensordata);">Refresh Data</button>
             </td>
           </tr>
           <tr>
-            <td colspan="1" align="center">
+            <td colspan="2" align="center">
               &nbsp;<input type="checkbox" id="raw-data"    onchange="javascript:onDataChange();">Raw
               &nbsp;<input type="checkbox" id="smooth-data" onchange="javascript:onDataChange();" checked="true">Smoothed
               &nbsp;<input type="checkbox" id="tooltip"     onchange="javascript:onDataChange();" checked="true">Tooltip
