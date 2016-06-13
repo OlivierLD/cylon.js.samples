@@ -119,6 +119,13 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var temp = parseFloat(json.last_value);
+        try {
+          var lastUpdated = json.updated_at;
+          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
+
+        } catch (timeErr) {
+          console.error(timeErr);
+        }
         lastTemperature = temp;
         sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
@@ -129,7 +136,7 @@ var go = function() {
         $("#mess").text("Problem with temperature...:" + err);
         thermometer.setValue(0.0);
       }
-      $("#last-value").text('Last updated ' + new Date());
+//    $("#last-value").text('Last updated ' + new Date());
       setTimeout(function() {
         $('body').css('cursor', 'auto');
       }, 1);
@@ -142,6 +149,13 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var humpc = parseFloat(json.last_value);
+        try {
+          var lastUpdated = json.updated_at;
+          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
+
+        } catch (timeErr) {
+          console.error(timeErr);
+        }
         lastHumidity = humpc;
         sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
@@ -152,7 +166,7 @@ var go = function() {
         $("#mess").text("Problem with humidity...:" + err);
         hum.setValue(0.0);
       }
-      $("#last-value").text('Last updated ' + new Date());
+//    $("#last-value").text('Last updated ' + new Date());
       setTimeout(function() {
         $('body').css('cursor', 'auto');
       }, 1);
@@ -165,6 +179,13 @@ var go = function() {
       var json = JSON.parse(value);
       try {
         var press = parseFloat(json.last_value);
+        try {
+          var lastUpdated = json.updated_at;
+          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
+
+        } catch (timeErr) {
+          console.error(timeErr);
+        }
         lastPressure = press;
         sensordata.push({ timestamp: new Date().getTime(), temp: lastTemperature, press: lastPressure, hum: lastHumidity });
       //thermometer.animate(temp);
@@ -175,7 +196,7 @@ var go = function() {
         $("#mess").text("Problem with temperature...:" + err);
         prmsl.setValue(0.0);
       }
-      $("#last-value").text('Last updated ' + new Date());
+//    $("#last-value").text('Last updated ' + new Date());
       setTimeout(function() {
         $('body').css('cursor', 'auto');
       }, 1);
