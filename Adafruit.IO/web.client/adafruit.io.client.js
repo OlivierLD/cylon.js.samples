@@ -121,8 +121,7 @@ var go = function() {
         var temp = parseFloat(json.last_value);
         try {
           var lastUpdated = json.updated_at;
-          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
-
+          $("#last-value").text('Last updated, client:' + new Date() + ', server:' + reformatDate(new Date(lastUpdated)));
         } catch (timeErr) {
           console.error(timeErr);
         }
@@ -151,8 +150,7 @@ var go = function() {
         var humpc = parseFloat(json.last_value);
         try {
           var lastUpdated = json.updated_at;
-          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
-
+          $("#last-value").text('Last updated, client:' + new Date() + ', server:' + reformatDate(new Date(lastUpdated)));
         } catch (timeErr) {
           console.error(timeErr);
         }
@@ -181,8 +179,7 @@ var go = function() {
         var press = parseFloat(json.last_value);
         try {
           var lastUpdated = json.updated_at;
-          $("#last-value").text('Last updated ' + new Date() + ', ' + lastUpdated);
-
+          $("#last-value").text('Last updated, client:' + new Date() + ', server:' + reformatDate(new Date(lastUpdated)));
         } catch (timeErr) {
           console.error(timeErr);
         }
