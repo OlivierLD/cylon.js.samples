@@ -91,7 +91,7 @@ var reformatDate = function(d, fmt) {
   }
   var date;
   if (fmt === undefined) {
-    fmt = "D d-M-Y H:i";
+    fmt = "D d-M-Y H:i:s";
   }
   // 07-03 00:00
   var dateRegExpr = new RegExp("(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2})");
