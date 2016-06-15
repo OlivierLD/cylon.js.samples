@@ -79,7 +79,8 @@ var updateOnClick = function(idx, press, temp, hum) {
   var txtDate = JSONParser.graphData[idx].getDataDate();
 //console.log("Date is : " + reformatDate(txtDate));
   var utc = document.getElementById("tz");
-  document.getElementById("recno").innerHTML = "Record #<b style='color:red;'>" + (idx + 1) + "</b> of " + JSONParser.graphData.length + ", " +  reformatDate(txtDate);
+  document.getElementById("recno").innerHTML = "Record #<b style='color:red;'>" + (idx + 1) + "</b> of " + JSONParser.graphData.length + ", " +  reformatDate(txtDate) +
+                                                " - Temp: " + temp.toFixed(2) + "&deg;C, Press: " + press.toFixed(2) + " hPa, Hum: " + hum.toFixed(2) + " %";
 
   graph.drawGraph("graphCanvas", graphdata, idx);
 };
@@ -91,7 +92,7 @@ var reformatDate = function(d, fmt) {
   }
   var date;
   if (fmt === undefined) {
-    fmt = "D d-M-Y H:i";
+    fmt = "D d-M-Y H:i:s";
   }
   // 07-03 00:00
   var dateRegExpr = new RegExp("(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2})");
